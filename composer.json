@@ -1,11 +1,23 @@
 {
     "name": "gurudin/admin",
-    "description": "admin",
+    "description": "Laravel admin",
+    "keywords": [
+        "laravel",
+        "admin",
+        "permission"
+    ],
+    "license": "MIT",
     "authors": [
         {
-            "name": "gaoxiang",
+            "name": "gurudin",
             "email": "hc.gaoxiang@gmail.com"
         }
     ],
-    "require": {}
+    "homepage": "https://github.com/gurudin/admin",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Gurudin\\Admin\\": "src/"
+        }
+    }
 }
