@@ -1,0 +1,11 @@
+{
+    "name": "gurudin/admin",
+    "description": "admin",
+    "authors": [
+        {
+            "name": "gaoxiang",
+            "email": "hc.gaoxiang@gmail.com"
+        }
+    ],
+    "require": {}
+}
