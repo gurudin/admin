@@ -14,10 +14,19 @@
         }
     ],
     "homepage": "https://github.com/gurudin/admin",
-    "require": {},
+    "require": {
+        "php": "^7.1"
+    },
     "autoload": {
         "psr-4": {
             "Gurudin\\Admin\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Gurudin\\Admin\\AdminServicProvider"
+            ]
         }
     }
 }
