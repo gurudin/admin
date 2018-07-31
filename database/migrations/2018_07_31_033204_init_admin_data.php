@@ -29,7 +29,10 @@ class InitAdminData extends Migration
         $gid = DB::table('auth_group')->insertGetId(['name' => 'Default', 'description' => 'default']);
 
         // auth_group_child
-        DB::table('auth_group_child')->insert(['group_id' => $gid, 'child' => $uid, 'type' => 1]);
+        DB::table('auth_group_child')->insert([
+            ['group_id' => $gid, 'child' => $uid, 'type' => 1],
+            ['group_id' => $gid, 'child' => 'permission-role', 'type' => 2],
+        ]);
 
         // auth_item
         $auth_item_data = [
@@ -47,6 +50,7 @@ class InitAdminData extends Migration
             ['name' => '/admin/permission/create', 'method' => 'get', 'type' => 2, 'description' => null],
             ['name' => '/admin/permission/view/{name?}', 'method' => 'get', 'type' => 2, 'description' => null],
             ['name' => '/admin/role', 'method' => 'any', 'type' => 2, 'description' => null],
+            ['name' => '/role/view/{name?}', 'method' => 'get', 'type' => 2, 'description' => null],
             ['name' => '/admin/route', 'method' => 'any', 'type' => 2, 'description' => null],
             ['name' => '/admin/update/{id?}', 'method' => 'get', 'type' => 2, 'description' => null],
             ['name' => '/admin/view/{name?}', 'method' => 'get', 'type' => 2, 'description' => null],
