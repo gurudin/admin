@@ -171,8 +171,11 @@
   </div>
 
 <!-- Scripts -->
+@section('main-script')
+  <script src="{{ mix('js/admin.js', 'vendor/gurudin') }}"></script>
+@show
+
 @section('script')
-<script src="{{ mix('js/admin.js', 'vendor/gurudin') }}"></script>
 @show
 <script>
 const menu = new Vue({

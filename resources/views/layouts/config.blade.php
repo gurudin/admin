@@ -22,6 +22,6 @@
   @yield('content')
 @endsection
 
-@section('script')
+@section('main-script')
   <script src="{{ mix('js/admin.js', 'vendor/gurudin') }}"></script>
 @endsection
