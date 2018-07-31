@@ -50,7 +50,7 @@ class InitAdminData extends Migration
             ['name' => '/admin/permission/create', 'method' => 'get', 'type' => 2, 'description' => null],
             ['name' => '/admin/permission/view/{name?}', 'method' => 'get', 'type' => 2, 'description' => null],
             ['name' => '/admin/role', 'method' => 'any', 'type' => 2, 'description' => null],
-            ['name' => '/role/view/{name?}', 'method' => 'get', 'type' => 2, 'description' => null],
+            ['name' => '/admin/role/view/{name?}', 'method' => 'get', 'type' => 2, 'description' => null],
             ['name' => '/admin/route', 'method' => 'any', 'type' => 2, 'description' => null],
             ['name' => '/admin/update/{id?}', 'method' => 'get', 'type' => 2, 'description' => null],
             ['name' => '/admin/view/{name?}', 'method' => 'get', 'type' => 2, 'description' => null],
