@@ -39,10 +39,10 @@ class AuthGroupChild extends Model
 
     /**
      * Get group by type
-     * 
+     *
      * @param int $type
      * @param string $user_id
-     * 
+     *
      * @return array
      */
     public function getGroupByType(int $type, string $user_id = '')
@@ -66,11 +66,11 @@ class AuthGroupChild extends Model
 
     /**
      * extendProfile
-     * 
+     *
      * @param array $oriArray
      * @param string $key
      * @param int $type
-     * 
+     *
      * @return array
      */
     public function extendProfile(array $oriArray, string $key = 'id', int $type = self::TYPE_USER)

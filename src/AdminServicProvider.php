@@ -11,7 +11,7 @@ class AdminServicProvider extends ServiceProvider
 {
     /**
      * Admin namespace.
-     * 
+     *
      * @var string
      */
     protected $namespace = 'Gurudin\Admin';

@@ -10,10 +10,10 @@ class AuthAssignmentController extends Controller
 {
     /**
      * (view) Assignment index
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Support\Helper $helper
-     * 
+     *
      * @return View
      */
     public function index(Request $request, Helper $helper)
@@ -25,11 +25,11 @@ class AuthAssignmentController extends Controller
 
     /**
      * (view) Assignment view
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Support\Helper $helper
      * @param int $user_id
-     * 
+     *
      * @return View
      */
     public function view(Request $request, Helper $helper, int $user_id)
@@ -52,10 +52,10 @@ class AuthAssignmentController extends Controller
 
     /**
      * (post ajax) Assignment create
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Support\Helper $helper
-     * 
+     *
      * @return Json
      */
     public function create(Request $request, Helper $helper)
@@ -67,10 +67,10 @@ class AuthAssignmentController extends Controller
 
     /**
      * (delete ajax) Assignment delete
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Support\Helper $helper
-     * 
+     *
      * @return Json
      */
     public function destroy(Request $request, Helper $helper)

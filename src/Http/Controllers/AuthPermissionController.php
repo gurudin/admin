@@ -11,10 +11,10 @@ class AuthPermissionController extends Controller
 {
     /**
      * (view) Permission index
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthItem $authItem
-     * 
+     *
      * @return View
      */
     public function index(Request $request, AuthItem $authItem)
@@ -26,10 +26,10 @@ class AuthPermissionController extends Controller
 
     /**
      * (view) Permission create
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthItem $authItem
-     * 
+     *
      * @return View
      */
     public function createView(Request $request, AuthItem $authItem)
@@ -39,12 +39,12 @@ class AuthPermissionController extends Controller
 
     /**
      * (view) Permission view
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthItem $authItem
      * @param Gurudin\Admin\Models\AuthItemChild $authItemChild
      * @param string $name
-     * 
+     *
      * @return View
      */
     public function view(Request $request, AuthItem $authItem, AuthItemChild $authItemChild, string $name)
@@ -57,10 +57,10 @@ class AuthPermissionController extends Controller
 
     /**
      * (post ajax) Permission create
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthItem $authItem
-     * 
+     *
      * @return Json
      */
     public function create(Request $request, AuthItem $authItem)
@@ -72,10 +72,10 @@ class AuthPermissionController extends Controller
 
     /**
      * (delete ajax) Permission create
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthItem $authItem
-     * 
+     *
      * @return Json
      */
     public function destroy(Request $request, AuthItem $authItem)
@@ -87,10 +87,10 @@ class AuthPermissionController extends Controller
 
     /**
      * (put ajax) Permission update
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthItem $authItem
-     * 
+     *
      * @return Json
      */
     public function update(Request $request, AuthItem $authItem)
@@ -102,10 +102,10 @@ class AuthPermissionController extends Controller
 
     /**
      * (post ajax) Batch create route children
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthItemChild $authItemChild
-     * 
+     *
      * @return Json
      */
     public function batchCreateRouteChild(Request $request, AuthItemChild $authItemChild)
@@ -117,10 +117,10 @@ class AuthPermissionController extends Controller
 
     /**
      * (delete ajax) Batch remove route children
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthItemChild $authItemChild
-     * 
+     *
      * @return Json
      */
     public function batchRemoveRouteChild(Request $request, AuthItemChild $authItemChild)

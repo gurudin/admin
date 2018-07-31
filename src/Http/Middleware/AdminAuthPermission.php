@@ -14,7 +14,7 @@ class AdminAuthPermission
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
-     * 
+     *
      * @return mixed
      */
     public function handle(\Illuminate\Http\Request $request, Closure $next)
@@ -58,8 +58,7 @@ class AdminAuthPermission
                     ? substr($value['child'], 1)
                     : $value['child']
                 ) : '';
-            if (
-                (in_array(strtoupper($value['method']), $current_route['method']))
+            if ((in_array(strtoupper($value['method']), $current_route['method']))
                 && $current_route['uri'] == $uri
             ) {
                 $isAllow = true;

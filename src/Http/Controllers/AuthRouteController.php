@@ -9,10 +9,10 @@ class AuthRouteController extends Controller
 {
     /**
      * (view) Route index
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthItem $authItem
-     * 
+     *
      * @return View
      */
     public function index(Request $request, AuthItem $authItem)
@@ -24,10 +24,10 @@ class AuthRouteController extends Controller
 
     /**
      * (post ajax) Create route
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthItem $authItem
-     * 
+     *
      * @return Json
      */
     public function create(Request $request, AuthItem $authItem)
@@ -43,7 +43,7 @@ class AuthRouteController extends Controller
 
     /**
      * (delete ajax) Delete route
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthItem $authItem
      */

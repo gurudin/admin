@@ -12,9 +12,9 @@ class AuthGroup extends Model
 
     /**
      * Get group
-     * 
+     *
      * @param int $id = 0
-     * 
+     *
      * @return array
      */
     public function getGroup(int $id = 0)
@@ -35,9 +35,9 @@ class AuthGroup extends Model
 
     /**
      * Get group by ids
-     * 
+     *
      * @param array $oriArray
-     * 
+     *
      * @return array
      */
     public function extendProfile($oriArray, $key = 'id')

@@ -10,10 +10,10 @@ class AuthRoleController extends Controller
 {
     /**
      * (view) Role index
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthItem $authItem
-     * 
+     *
      * @return View
      */
     public function index(Request $request, AuthItem $authItem)
@@ -25,11 +25,11 @@ class AuthRoleController extends Controller
 
     /**
      * (view) Role view
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthItem $authItem
      * @param string $name
-     * 
+     *
      * @return View
      */
     public function view(Request $request, AuthItem $authItem, AuthItemChild $authItemChild, string $name)
@@ -42,10 +42,10 @@ class AuthRoleController extends Controller
 
     /**
      * (post ajax) Role create
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthItem $authItem
-     * 
+     *
      * @return Json
      */
     public function create(Request $request, AuthItem $authItem)
@@ -57,10 +57,10 @@ class AuthRoleController extends Controller
 
     /**
      * (put ajax) Role update
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthItem $authItem
-     * 
+     *
      * @return Json
      */
     public function update(Request $request, AuthItem $authItem)
@@ -72,10 +72,10 @@ class AuthRoleController extends Controller
 
     /**
      * (delete ajax) Role destroy
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthItem $authItem
-     * 
+     *
      * @return Json
      */
     public function destroy(Request $request, AuthItem $authItem)

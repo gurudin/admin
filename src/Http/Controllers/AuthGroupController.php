@@ -14,10 +14,10 @@ class AuthGroupController extends Controller
 {
     /**
      * (view) Group select
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthGroup $authGroup
-     * 
+     *
      * @return View
      */
     public function select(Request $request, Helper $Helper)
@@ -37,10 +37,10 @@ class AuthGroupController extends Controller
 
     /**
      * (view) Group index
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthGroup $authGroup
-     * 
+     *
      * @return View
      */
     public function index(Request $request, AuthGroup $authGroup)
@@ -52,14 +52,14 @@ class AuthGroupController extends Controller
 
     /**
      * (view) Group view
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthGroup $authGroupChild
      * @param Gurudin\Admin\Models\AuthItem $authItem
      * @param Gurudin\Admin\Models\User $user
      * @param int $id
      * @param string $name
-     * 
+     *
      * @return View
      */
     public function view(
@@ -87,10 +87,10 @@ class AuthGroupController extends Controller
 
     /**
      * (post ajax) Group create
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthGroup $authGroup
-     * 
+     *
      * @return Json
      */
     public function create(Request $request, AuthGroup $authGroup)
@@ -104,10 +104,10 @@ class AuthGroupController extends Controller
 
     /**
      * (put ajax) Group update
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthGroup $authGroup
-     * 
+     *
      * @return Json
      */
     public function update(Request $request, AuthGroup $authGroup)
@@ -121,10 +121,10 @@ class AuthGroupController extends Controller
 
     /**
      * (delete ajax) Group delete
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthGroup $authGroup
-     * 
+     *
      * @return Json
      */
     public function destroy(Request $request, AuthGroup $authGroup)
@@ -136,10 +136,10 @@ class AuthGroupController extends Controller
 
     /**
      * (post ajax) Group child create
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthGroupChild $authGroupChild
-     * 
+     *
      * @return Json
      */
     public function createChild(Request $request, AuthGroupChild $authGroupChild)
@@ -151,10 +151,10 @@ class AuthGroupController extends Controller
 
     /**
      * (delete ajax) Group child delete
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\AuthGroupChild $authGroupChild
-     * 
+     *
      * @return Json
      */
     public function destroyChild(Request $request, AuthGroupChild $authGroupChild)

@@ -46,14 +46,14 @@ class Menu extends Model
 
     /**
      * Get menus by fileds
-     * 
+     *
      * @param array $arr = [ (required)
      *      '/menu',
      *      '/route',
      *      ...
      * ];
      * @param string $key = (id or route ro parent)
-     * 
+     *
      * @return array
      */
     public function getMenuByFiled(array $arr, $key = 'id')

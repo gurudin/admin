@@ -10,10 +10,10 @@ class AuthMenuController extends Controller
 {
     /**
      * (view) Menu index
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\Menu $menu
-     * 
+     *
      * @return View
      */
     public function index(Request $request, Menu $menu)
@@ -25,12 +25,12 @@ class AuthMenuController extends Controller
 
     /**
      * (view) Menu create
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\Menu $menu
      * @param Gurudin\Admin\Models\AuthItem $authItem
      * @param int $id
-     * 
+     *
      * @return View
      */
     public function createView(Request $request, Menu $menu, AuthItem $authItem, int $id = 0)
@@ -50,10 +50,10 @@ class AuthMenuController extends Controller
 
     /**
      * (post ajax) Menu create
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\Menu $menu
-     * 
+     *
      * @return Json
      */
     public function create(Request $request, Menu $menu)
@@ -67,10 +67,10 @@ class AuthMenuController extends Controller
 
     /**
      * (put ajax) Menu update
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\Menu $menu
-     * 
+     *
      * @return Json
      */
     public function update(Request $request, Menu $menu)
@@ -84,10 +84,10 @@ class AuthMenuController extends Controller
 
     /**
      * (delete ajax) Menu delete
-     * 
+     *
      * @param Illuminate\Http\Request $request
      * @param Gurudin\Admin\Models\Menu $menu
-     * 
+     *
      * @return Json
      */
     public function destroy(Request $request, Menu $menu)

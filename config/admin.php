@@ -3,7 +3,7 @@
 return [
     /*
     |--------------------------------------------------------------------------
-    | Super administrator account. 
+    | Super administrator account.
     |--------------------------------------------------------------------------
     |
     | Account with super permissions.
@@ -15,7 +15,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Allowed route. 
+    | Allowed route.
     |--------------------------------------------------------------------------
     |
     | Routes that do not require permission detection.
@@ -39,12 +39,12 @@ return [
     |   <title>@yield('title') {{ config('app.name', '') }}</title>
     |   @yield('style')
     | </head>
-    | 
+    |
     | <body>
-    | 
+    |
     |   ...
     |   ...
-    | 
+    |
     | @yield('script')
     | </body>
     |

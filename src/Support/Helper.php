@@ -15,9 +15,9 @@ class Helper
 {
     /**
      * Is admin
-     * 
+     *
      * @param User $user
-     * 
+     *
      * @return bool
      */
     public static function isAdmin(User $user)
@@ -27,9 +27,9 @@ class Helper
 
     /**
      * Remove cache
-     * 
+     *
      * @param string $key='menu'
-     * 
+     *
      * @return void
      */
     public static function removeCache(string $key = 'menu')
@@ -39,7 +39,7 @@ class Helper
 
     /**
      * Save auth assignment
-     * 
+     *
      * @param array $data = [
      *      'user_id'  => '', (required)
      *      'group_id' => 0, (required)
@@ -49,7 +49,7 @@ class Helper
      *          ...
      *      ]
      * ];
-     * 
+     *
      * @return bool
      */
     public static function saveAuthAssignment(array $data)
@@ -62,7 +62,7 @@ class Helper
 
     /**
      * Remove auth assignment
-     * 
+     *
      * @param array $data = [
      *      'user_id'  => '', (required)
      *      'group_id' => 0, (required)
@@ -72,7 +72,7 @@ class Helper
      *          ...
      *      ]
      * ];
-     * 
+     *
      * @return bool
      */
     public static function removeAuthAssignment(array $data)
@@ -85,9 +85,9 @@ class Helper
 
     /**
      * Get auth group permission by group_ids (1,2,3)
-     * 
+     *
      * @param string $group_ids
-     * 
+     *
      * @return array
      */
     public static function getAuthGroupPermission(User $user, string $group_ids)
@@ -155,8 +155,6 @@ class Helper
             }
             unset($child);
             $user_res['group'] = $child_res;
-
-            
         } else {
             $group_info  = $groupModel->getGroup($group_id);
             $group_res[] = ['group_id' => $group_info['id'], 'name' => $group_info['name']];
@@ -176,10 +174,10 @@ class Helper
 
     /**
      * Get auth user by (user, group_id)
-     * 
+     *
      * @param User $user
      * @param int $group_id
-     * 
+     *
      * @return array
      */
     public static function getAuthUser(User $user, int $group_id)
@@ -225,9 +223,9 @@ class Helper
 
     /**
      * Get auth group by user
-     * 
+     *
      * @param User $user
-     * 
+     *
      * @return array
      */
     public static function authGroup(User $user)
@@ -243,10 +241,10 @@ class Helper
 
     /**
      * Get auth menu by user
-     * 
+     *
      * @param User $user
      * @param int $group_id
-     * 
+     *
      * @return array
      */
     public static function authMenu(User $user, int $group_id = 0)
@@ -286,10 +284,10 @@ class Helper
 
     /**
      * (Auth) Get user group menus by (user_id, group_id)
-     * 
+     *
      * @param string $user_id (required)
      * @param int $group_id (required)
-     * 
+     *
      * @return array
      */
     public static function getUserMenu(string $user_id, int $group_id)
@@ -310,7 +308,7 @@ class Helper
 
     /**
      * Get menus by childs
-     * 
+     *
      * @param array $child_item
      * @param int $pid
      */
@@ -330,7 +328,7 @@ class Helper
 
     /**
      * Get routes by parents
-     * 
+     *
      * @param array $parents = [
      *      'parents1',
      *      'parents2',
@@ -338,12 +336,12 @@ class Helper
      * ];
      * @param array &$routes = []
      * @param array $fileds = []
-     * 
+     *
      * @return array
      */
     public static function getRouteByParents(array $parents, array &$routes)
     {
-        $parents = array_filter(array_map(function($value) use(&$routes) {
+        $parents = array_filter(array_map(function ($value) use (&$routes) {
             if ($value[0] == '/') {
                 $routes[] = $value;
             } else {
@@ -363,7 +361,7 @@ class Helper
 
     public static function getRouteByItemParents(array $parents, array &$routes)
     {
-        $parents = array_filter(array_map(function($value) use(&$routes) {
+        $parents = array_filter(array_map(function ($value) use (&$routes) {
             if ($value['child'][0] == '/') {
                 $routes[] = $value;
             } else {
@@ -402,8 +400,8 @@ class Helper
     {
         $tree = [];
         
-        foreach($data as $k => $v) {
-            if($v['parent'] == $pId) {    
+        foreach ($data as $k => $v) {
+            if ($v['parent'] == $pId) {
                 $v['children'] = self::getTree($data, $v['id']);
                 $tree[] = $v;
                 unset($data[$k]);

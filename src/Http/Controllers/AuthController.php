@@ -26,9 +26,9 @@ class AuthController extends Controller
 
     /**
      * (post) Login
-     * 
+     *
      * @param Illuminate\Http\Request $request
-     * 
+     *
      * @return
      */
     public function login(Request $request)
@@ -53,9 +53,9 @@ class AuthController extends Controller
 
     /**
      * (post) Register
-     * 
+     *
      * @param Illuminate\Http\Request $request
-     * 
+     *
      * @return
      */
     public function register(Request $request)

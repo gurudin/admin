@@ -18,12 +18,12 @@ class Controller extends BaseController
 
     /**
      * Ajax response
-     * 
+     *
      * @param bool $status
      * @param array $data = []
      * @param string $msg = ''
      * @param int $header_code = 200
-     * 
+     *
      * @return Json
      */
     public function response(bool $status, array $data = [], string $msg = '', int $header_code = 200)

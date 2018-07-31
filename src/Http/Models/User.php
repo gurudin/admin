@@ -34,7 +34,7 @@ class User extends Authenticatable
 
     /**
      * Get user item.
-     * 
+     *
      * @param string $id
      *
      * @return array
@@ -60,9 +60,9 @@ class User extends Authenticatable
 
     /**
      * Get user by ids
-     * 
+     *
      * @param array $oriArray
-     * 
+     *
      * @return array
      */
     public function extendProfile(array $oriArray, string $key = 'id')

@@ -35,7 +35,7 @@ class AuthAssignment extends Model
 
     /**
      * Save auth assignment
-     * 
+     *
      * @param array $data = [
      *      'user_id'  => '', (required)
      *      'group_id' => 0, (required)
@@ -45,7 +45,7 @@ class AuthAssignment extends Model
      *          ...
      *      ]
      * ];
-     * 
+     *
      * @return bool
      */
     public function saveAuthAssignment(array $data)

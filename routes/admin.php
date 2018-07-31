@@ -1,7 +1,7 @@
 <?php
 
 Route::prefix('admin')->group(function () {
-    Route::group(['namespace' => 'Controllers'], function() {
+    Route::group(['namespace' => 'Controllers'], function () {
         Route::get('login', 'AuthController@loginFrom')->name('get.auth.login');
         Route::post('login', 'AuthController@login')->name('post.auth.login');
 
@@ -14,11 +14,11 @@ Route::prefix('admin')->group(function () {
 
 Route::prefix('admin')->group(function () {
     Route::group(['namespace' => 'Controllers', 'middleware' => 'auth'], function () {
-        Route::get('/', function() {
+        Route::get('/', function () {
             return redirect()->route('get.group.select');
         });
 
-        Route::get('welcome', function() {
+        Route::get('welcome', function () {
             if (!request()->group) {
                 return redirect()->route('get.group.select');
             }
@@ -53,8 +53,10 @@ Route::prefix('admin')->group(function () {
         Route::delete('permission', 'AuthPermissionController@destroy')->name('delete.permission.destroy');
         Route::get('permission/view/{name?}', 'AuthPermissionController@view')->name('get.permission.view');
 
-        Route::post('batchPermission', 'AuthPermissionController@batchCreateRouteChild')->name('post.permission.batchRouteChild');
-        Route::delete('batchPermission', 'AuthPermissionController@batchRemoveRouteChild')->name('delete.permission.batchRouteChild');
+        Route::post('batchPermission', 'AuthPermissionController@batchCreateRouteChild')
+            ->name('post.permission.batchRouteChild');
+        Route::delete('batchPermission', 'AuthPermissionController@batchRemoveRouteChild')
+            ->name('delete.permission.batchRouteChild');
 
         Route::get('role', 'AuthRoleController@index')->name('get.role.index');
         Route::post('role', 'AuthRoleController@create')->name('post.role.create');
