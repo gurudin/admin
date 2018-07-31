@@ -57,6 +57,7 @@ export default {
     },
     listenToChild: function (somedata){
       this.openChild();
+      this.$emit('listen-child');
     }
   },
   created() {

@@ -11,6 +11,8 @@
   <title>@yield('title') {{ config('app.name', '') }}</title>
 
   <!-- Styles -->
+  <link rel="stylesheet" type="text/css" href="{{ mix('css/admin.css', 'vendor/gurudin') }}">
+  
   @yield('style')
   <style>
   .navbar-brand {
@@ -169,7 +171,9 @@
   </div>
 
 <!-- Scripts -->
-@yield('script')
+@section('script')
+<script src="{{ mix('js/admin.js', 'vendor/gurudin') }}"></script>
+@show
 <script>
 const menu = new Vue({
   el: '#menu-bar',

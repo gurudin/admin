@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Gurudin\Admin\Support\Helper;
+use Illuminate\Support\Facades\Cache;
 
 class AdminAuthPermission
 {
@@ -31,17 +32,21 @@ class AdminAuthPermission
         foreach (config('admin.allow') as $allow) {
             $uri  = isset($allow['uri']) ? ($allow['uri'][0] == '/' ? substr($allow['uri'], 1) : $allow['uri']) : '';
             $name = $allow['name'] ?? '';
-
+            
             if (in_array(strtoupper($allow['method']), $current_route['method'])
-                && ($current_route['uri'] == $uri || $current_route['name'] == $name)
+                && ($current_route['uri'] == $uri || $current_route['name'] === $name)
             ) {
                 return $next($request);
             }
         }
 
         // Check group id.
-        if (!$group_id = $request->get('group')) {
-            return redirect()->route('get.group.select');
+        if (Cache::get('current-group-' . Auth::user()->id)) {
+            $group_id = Cache::get('current-group-' . Auth::user()->id);
+        } else {
+            if (!$group_id = $request->get('group')) {
+                return redirect()->route('get.group.select');
+            }
         }
 
         // Is admin.

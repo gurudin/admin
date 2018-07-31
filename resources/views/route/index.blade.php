@@ -20,7 +20,7 @@
         
         <div class="input-group mb-3">
           <div class="input-group-append">
-            <select class="form-control">
+            <select class="form-control" v-model="routeModel.method">
               <option value="get">GET</option>
               <option value="post">POST</option>
               <option value="put">PUT</option>

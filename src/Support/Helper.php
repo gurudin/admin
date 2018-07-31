@@ -249,9 +249,10 @@ class Helper
      */
     public static function authMenu(User $user, int $group_id = 0)
     {
+        cache(['current-group-' . $user->id], 60 * 12);
         if ($cache = Cache::get("menu")) {
-            if (isset($cache['menu-' . $user->id])) {
-                return $cache['menu-' . $user->id];
+            if (isset($cache['menu-' . $user->id . $group_id])) {
+                return $cache['menu-' . $user->id . $group_id];
             }
         }
 
@@ -276,7 +277,7 @@ class Helper
         $tree = self::getTree($menu_item, null);
 
         cache(['menu' => [
-            'menu-' . $user->id => $tree
+            'menu-' . $user->id . $group_id => $tree
         ]], 60 * 12);
 
         return $tree;

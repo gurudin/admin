@@ -5,6 +5,7 @@ namespace Gurudin\Admin\Controllers;
 use Illuminate\Http\Request;
 use Gurudin\Admin\Models\Menu;
 use Gurudin\Admin\Models\AuthItem;
+use Gurudin\Admin\Support\Helper;
 
 class AuthMenuController extends Controller
 {
@@ -58,6 +59,7 @@ class AuthMenuController extends Controller
      */
     public function create(Request $request, Menu $menu)
     {
+        Helper::removeCache();
         $result = $menu->saveMenu($request->input());
 
         return $result
@@ -75,6 +77,7 @@ class AuthMenuController extends Controller
      */
     public function update(Request $request, Menu $menu)
     {
+        Helper::removeCache();
         $result = $menu->saveMenu($request->input());
 
         return $result
@@ -92,6 +95,7 @@ class AuthMenuController extends Controller
      */
     public function destroy(Request $request, Menu $menu)
     {
+        Helper::removeCache();
         return $menu->deleteMenu($request->input('id'))
             ? $this->response(true)
             : $this->response(false);

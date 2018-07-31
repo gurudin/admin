@@ -86,7 +86,7 @@ new Vue({
     routesData() {
       var data = this.routes;
       data = data.filter(row =>{
-        return row.method == 'get' ? true : false;
+        return row.method == 'get' || row.method == 'any' ? true : false;
       });
 
       return data;
