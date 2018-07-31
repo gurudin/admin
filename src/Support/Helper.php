@@ -249,7 +249,7 @@ class Helper
      */
     public static function authMenu(User $user, int $group_id = 0)
     {
-        cache(['current-group-' . $user->id], 60 * 12);
+        cache(['current-group-' . $user->id => $group_id], 60 * 12);
         if ($cache = Cache::get("menu")) {
             if (isset($cache['menu-' . $user->id . $group_id])) {
                 return $cache['menu-' . $user->id . $group_id];
@@ -267,6 +267,7 @@ class Helper
             $menu_item[] = [
                 'id'     => $menu['id'],
                 'text'   => $menu['title'],
+                'order'  => $menu['order'],
                 'href'   => $menu['route'],
                 'icon'   => $menu['data'] ? json_decode($menu['data'])->icon : '',
                 'parent' => $menu['parent'],
@@ -274,13 +275,30 @@ class Helper
         }
         unset($menu);
 
+        $menu_item = array_map('unserialize', array_unique(array_map('serialize', $menu_item)));
         $tree = self::getTree($menu_item, null);
-
+        $tree = self::arraySort($tree, 'order', 'asc');
+        
         cache(['menu' => [
             'menu-' . $user->id . $group_id => $tree
         ]], 60 * 12);
 
         return $tree;
+    }
+
+    private static function arraySort($array, $keys, $sort = 'asc')
+    {
+        $newArr = $valArr = array();
+        foreach ($array as $key => $value) {
+            $valArr[$key] = $value[$keys];
+        }
+        ($sort == 'asc') ?  asort($valArr) : arsort($valArr);
+        reset($valArr);
+        foreach ($valArr as $key => $value) {
+            $newArr[$key] = $array[$key];
+        }
+
+        return array_values($newArr);
     }
 
     /**
