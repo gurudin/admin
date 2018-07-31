@@ -111,14 +111,14 @@
         <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-globe-americas"></i>
           
-          @foreach (request()->session()->get('group_list') as $group)
+          @foreach (Gurudin\Admin\Support\Helper::authGroup(Auth::user()) as $group)
             @if ($group['id'] == request()->group)
             {{ strtoupper($group['name']) }}
             @endif
           @endforeach
         </button>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-          @foreach (request()->session()->get('group_list') as $group)
+          @foreach (Gurudin\Admin\Support\Helper::authGroup(Auth::user()) as $group)
             <a class="dropdown-item" href="{{ url()->current() . '?group=' . $group['id'] }}">{{ strtoupper($group['name']) }}</a>
           @endforeach
         </div>

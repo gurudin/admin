@@ -5,9 +5,15 @@ namespace Gurudin\Admin;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Gurudin\Admin\Middleware\AdminAuthPermission;
 
 class AdminServicProvider extends ServiceProvider
 {
+    /**
+     * Admin namespace.
+     * 
+     * @var string
+     */
     protected $namespace = 'Gurudin\Admin';
 
     /**
@@ -17,11 +23,14 @@ class AdminServicProvider extends ServiceProvider
      */
     public function boot()
     {
+        /** Add middleware */
+        Route::aliasMiddleware('admin', AdminAuthPermission::class);
+
         /** Add route address */
         $this->loadRoutesFrom(__DIR__ . '/../routes/admin.php');
         Route::middleware('web')
-             ->namespace($this->namespace)
-             ->group(__DIR__ . '/../routes/admin.php');
+            ->namespace($this->namespace)
+            ->group(__DIR__ . '/../routes/admin.php');
 
         /** Add views */
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'admin');
@@ -36,7 +45,6 @@ class AdminServicProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../public' => public_path('vendor/gurudin'),
             __DIR__ . '/../config/admin.php' => config_path('admin.php'),
-            __DIR__ . '/Http/Middleware/AdminAuthPermission.php' => app_path('/Http/Middleware/AdminAuthPermission.php'),
         ], 'gurudin-admin');
     }
 

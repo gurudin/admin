@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace Gurudin\Admin\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Route;
