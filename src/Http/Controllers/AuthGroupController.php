@@ -22,15 +22,7 @@ class AuthGroupController extends Controller
      */
     public function select(Request $request, Helper $Helper)
     {
-        // if ($request->session()->has('group_list')) {
-        //     $group_list = $request->session()->get('group_list');
-        // } else {
-        //     $group_list = $Helper::authGroup(Auth::user());
-        //     $request->session()->put('group_list', $group_list);
-        // }
-
         $group_list = $Helper::authGroup(Auth::user());
-        $request->session()->put('group_list', $group_list);
         
         return view(config('admin.select_view'), compact('group_list'));
     }
@@ -144,6 +136,8 @@ class AuthGroupController extends Controller
      */
     public function createChild(Request $request, AuthGroupChild $authGroupChild)
     {
+        Helper::removeCache('group');
+        
         return $authGroupChild->setAuthGroupChild($request->all())
             ? $this->response(true)
             : $this->response(false, [], 'failed to create.');
@@ -159,6 +153,8 @@ class AuthGroupController extends Controller
      */
     public function destroyChild(Request $request, AuthGroupChild $authGroupChild)
     {
+        Helper::removeCache('group');
+
         return $authGroupChild->removeAuthGroup($request->all())
             ? $this->response(true)
             : $this->response(false, [], 'failed to delete.');

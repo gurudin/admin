@@ -230,11 +230,21 @@ class Helper
      */
     public static function authGroup(User $user)
     {
+        
+        if ($cache = Cache::get('group')) {
+            if ($cache['group' . $user->id]) {
+                return $cache['group' . $user->id];
+            }
+        }
+        
         $m = new AuthGroupChild;
         
         $group_arr = $m->getGroupByType($m::TYPE_USER, $user->id);
 
         $result = (new AuthGroup)->extendProfile($group_arr, 'group_id');
+        cache(['group' => [
+                'group' . $user->id => $result
+        ]], 60 * 12);
 
         return $result;
     }

@@ -97,13 +97,13 @@
 </head>
 <body>
 
-  <div id="app">
+  <div id="gurudin-main">
     <nav class="navbar navbar-dark fixed-top bg-info flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-md-2 mr-0" href="{{route('get.welcome')}}">{{config('app.name')}}</a>
+      <a class="navbar-brand col-md-2 mr-0" href="{{route('get.welcome')}}" ref="nav-top">{{config('app.name')}}</a>
       
       <div class="navbar-collapse">
         <nav class="navbar navbar-dark">
-          <button class="navbar-toggler" type="button">
+          <button class="navbar-toggler" type="button" @click="togglerBar">
             <span class="navbar-toggler-icon"></span>
           </button>
         </nav>
@@ -148,7 +148,7 @@
     <div class="container-fluid">
       <div class="row">
         {{-- Left nav --}}
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar" id="menu-bar">
+        <nav class="col-md-2 bg-light sidebar" ref="menu">
           <div class="sidebar-sticky">
 
             <menu-tree
@@ -161,7 +161,7 @@
         {{-- Left nav end --}}
 
         {{-- Main --}}
-        <main role="main" class="col-md-10 ml-sm-auto px-4">
+        <main role="main" class="col-md-10 ml-sm-auto px-4" ref="main">
           @yield('content')
         </main>
         {{-- Main end --}}
@@ -179,7 +179,19 @@
 @show
 <script>
 const menu = new Vue({
-  el: '#menu-bar',
+  el: '#gurudin-main',
+  methods: {
+    togglerBar() {
+      $(this.$refs.menu).toggleClass('d-none');
+      $(this.$refs['nav-top']).toggleClass('d-none');
+      
+      if ($(this.$refs.menu).attr('class').indexOf('d-none') > -1) {
+        $(this.$refs.main).addClass('col-md-12').removeClass('col-md-10');
+      } else {
+        $(this.$refs.main).addClass('col-md-10').removeClass('col-md-12');
+      }
+    }
+  }
 });
 </script>
 </body>

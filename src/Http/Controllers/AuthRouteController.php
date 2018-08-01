@@ -17,9 +17,24 @@ class AuthRouteController extends Controller
      */
     public function index(Request $request, AuthItem $authItem)
     {
+        $local_routes = [];
+        $local = app()->routes->getRoutes();
+        foreach ($local as $route) {
+            foreach ($route->methods as $method) {
+                if (strtolower($method) != 'head') {
+                    $local_routes[] = [
+                        'name'   => $route->uri[0] == '/' ? $route->uri : '/' . $route->uri,
+                        'method' => strtolower($method),
+                    ];
+                }
+            }
+        }
+        unset($route);
+        
         $routes = $authItem->getPermission();
+        $local_routes = array_values($local_routes);
 
-        return view('admin::route.index', compact('routes'));
+        return view('admin::route.index', compact('routes', 'local_routes'));
     }
 
     /**
@@ -32,11 +47,18 @@ class AuthRouteController extends Controller
      */
     public function create(Request $request, AuthItem $authItem)
     {
-        $authItem->name   = $request->post('name');
-        $authItem->method = $request->post('method');
-        $authItem->type   = $authItem::TYPE_PERMISSION;
+        $req_data = $request->all();
+        $data     = [];
+        
+        foreach ($req_data as $req) {
+            $data[] = [
+                'name'   => $req['name'],
+                'method' => $req['method'],
+                'type'   => $authItem::TYPE_PERMISSION
+            ];
+        }
 
-        return $authItem->save()
+        return $authItem->insert($data)
             ? $this->response(true)
             : $this->response(false, [], 'failed to create.');
     }
@@ -49,8 +71,12 @@ class AuthRouteController extends Controller
      */
     public function destroy(Request $request, AuthItem $authItem)
     {
-        return $authItem->removeItem($request->all())
-            ? $this->response(true)
-            : $this->response(false, [], 'failed to remove.');
+        $req_data = $request->all();
+
+        foreach ($req_data as $data) {
+            $authItem->removeItem($data, $authItem::TYPE_PERMISSION);
+        }
+        
+        return $this->response(true);
     }
 }

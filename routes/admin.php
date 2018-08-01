@@ -1,18 +1,6 @@
 <?php
 
 Route::prefix('admin')->group(function () {
-    Route::group(['namespace' => 'Controllers'], function () {
-        Route::get('login', 'AuthController@loginFrom')->name('get.auth.login');
-        Route::post('login', 'AuthController@login')->name('post.auth.login');
-
-        Route::get('register', 'AuthController@registerFrom')->name('get.auth.register');
-        Route::post('register', 'AuthController@register')->name('post.auth.register');
-
-        Route::get('logout', 'AuthController@logout')->name('get.auth.logout');
-    });
-});
-
-Route::prefix('admin')->group(function () {
     Route::group(['namespace' => 'Controllers', 'middleware' => 'auth'], function () {
         Route::get('/', function () {
             return redirect()->route('get.group.select');

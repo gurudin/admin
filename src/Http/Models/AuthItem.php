@@ -137,9 +137,12 @@ class AuthItem extends Model
     /**
      * Remove by (name & method)
      *
+     * @param array $data
+     * @param int $type
+     *
      * @return bool
      */
-    public function removeItem(array $data)
+    public function removeItem(array $data, int $type = self::TYPE_ROLE)
     {
         $count = $this->where(['name' => $data['name'], 'method' => ($data['method'] ? $data['method'] : '')])->count();
         if ($count == 0) {
@@ -147,7 +150,11 @@ class AuthItem extends Model
         }
 
         $m = new AuthItemChild;
-        $m->removeItemChild(['parent' => $data['name'], 'method' => ($data['method'] ? $data['method'] : '')]);
+        if ($type == self::TYPE_ROLE) {
+            $m->removeItemChild(['parent' => $data['name'], 'method' => ($data['method'] ? $data['method'] : '')]);
+        } else {
+            $m->where(['child' => $data['name'], 'method' => ($data['method'] ? $data['method'] : '')])->delete();
+        }
         
         return $this->where(['name' => $data['name'], 'method' => ($data['method'] ? $data['method'] : '')])->delete();
     }
