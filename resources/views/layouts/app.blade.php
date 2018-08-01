@@ -14,96 +14,16 @@
   <link rel="stylesheet" type="text/css" href="{{ mix('css/admin.css', 'vendor/gurudin') }}">
   
   @yield('style')
-  <style>
-  .navbar-brand {
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-    font-size: 1rem;
-    background-color: rgba(0, 0, 0, .25);
-    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
-    width: 337px;
-  }
-  .sidebar {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 100;
-    padding: 48px 0 0;
-    /* width: 230px; */
-    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-  }
-  .sidebar-sticky {
-    position: -webkit-sticky;
-    position: sticky;
-  }
-  .sidebar-sticky {
-    position: relative;
-    top: 0;
-    height: calc(100vh - 48px);
-    padding-top: .5rem;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-  .sidebar .nav-link.active {
-    color: #007bff;
-  }
-
-  .sidebar .nav-link {
-      font-weight: 500;
-      color: #333;
-  }
-  .sidebar .nav-link .feather {
-      margin-right: 4px;
-      color: #999;
-  }
-  .sidebar .nav-link:hover .feather, .sidebar .nav-link.active .feather {
-      color: inherit;
-  }
-  .feather {
-      width: 16px;
-      height: 16px;
-      vertical-align: text-bottom;
-  }
-
-  .nav-item i {
-    width: 16px;
-      height: 16px;
-      vertical-align: text-bottom;
-  }
-  .sidebar .nav-link:hover i{
-    color: inherit;
-  }
-  .nav-item .child_menu li{
-    padding-left: 25px;
-  }
-  [role="main"] {
-      padding-top: 60px;
-      /* padding-left: 35px !important; */
-  }
-  /* 设置持续时间和动画函数 */
-  .slide-fade-enter-active {
-    transition: all .3s ease;
-  }
-  .slide-fade-leave-active {
-    transition: all .0s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-  }
-  .slide-fade-enter, .slide-fade-leave-to
-  /* .slide-fade-leave-active for below version 2.1.8 */ {
-    transform: translateX(10px);
-    opacity: 0;
-  }
-  </style>
 </head>
 <body>
 
-  <div id="gurudin-main">
+  <div id="app">
     <nav class="navbar navbar-dark fixed-top bg-info flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-md-2 mr-0" href="{{route('get.welcome')}}" ref="nav-top">{{config('app.name')}}</a>
+      <a class="navbar-brand col-md-2 mr-0" href="{{route('get.welcome')}}" id="nav-top">{{config('app.name')}}</a>
       
       <div class="navbar-collapse">
         <nav class="navbar navbar-dark">
-          <button class="navbar-toggler" type="button" @click="togglerBar">
+          <button class="navbar-toggler" type="button" id="navbar-toggler">
             <span class="navbar-toggler-icon"></span>
           </button>
         </nav>
@@ -148,20 +68,20 @@
     <div class="container-fluid">
       <div class="row">
         {{-- Left nav --}}
-        <nav class="col-md-2 bg-light sidebar" ref="menu">
+        <nav class="col-md-2 bg-light sidebar" id="gurudin-menu-bar" ref="menu">
           <div class="sidebar-sticky">
 
             <menu-tree
               :data-tree="{{ json_encode(Gurudin\Admin\Support\Helper::authMenu(Auth::user(), request()->group)) }}"
               :data-group="{{ request()->group }}"
               current-uri="{{ Route::current()->uri }}"></menu-tree>
-      
+
           </div>
         </nav>
         {{-- Left nav end --}}
 
         {{-- Main --}}
-        <main role="main" class="col-md-10 ml-sm-auto px-4" ref="main">
+        <main role="main" class="col-md-10 ml-sm-auto px-4" id="gurudin-main">
           @yield('content')
         </main>
         {{-- Main end --}}
@@ -177,22 +97,5 @@
 
 @section('script')
 @show
-<script>
-const menu = new Vue({
-  el: '#gurudin-main',
-  methods: {
-    togglerBar() {
-      $(this.$refs.menu).toggleClass('d-none');
-      $(this.$refs['nav-top']).toggleClass('d-none');
-      
-      if ($(this.$refs.menu).attr('class').indexOf('d-none') > -1) {
-        $(this.$refs.main).addClass('col-md-12').removeClass('col-md-10');
-      } else {
-        $(this.$refs.main).addClass('col-md-10').removeClass('col-md-12');
-      }
-    }
-  }
-});
-</script>
 </body>
 </html>
