@@ -232,7 +232,7 @@ class Helper
     {
         
         if ($cache = Cache::get('group')) {
-            if ($cache['group' . $user->id]) {
+            if (isset($cache['group' . $user->id])) {
                 return $cache['group' . $user->id];
             }
         }
