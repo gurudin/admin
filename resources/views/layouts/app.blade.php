@@ -72,7 +72,7 @@
           <div class="sidebar-sticky">
 
             <menu-tree
-              :data-tree="{{ json_encode(Gurudin\Admin\Support\Helper::authMenu(Auth::user(), request()->group)) }}"
+              :data-tree="{{ json_encode(Gurudin\Admin\Support\Helper::authMenu(Auth::user(), request('group', 0))) }}"
               :data-group="{{ request()->group }}"
               current-uri="{{ Route::current()->uri }}"></menu-tree>
 
