@@ -44,8 +44,11 @@ class AdminServicProvider extends ServiceProvider
         /** Publishes static resources */
         $this->publishes([
             __DIR__ . '/../public' => public_path('vendor/gurudin'),
-            __DIR__ . '/../config/admin.php' => config_path('admin.php'),
         ], 'gurudin-admin');
+
+        $this->publishes([
+            __DIR__ . '/../config/admin.php' => config_path('admin.php'),
+        ], 'gurudin-admin-config');
     }
 
     /**
