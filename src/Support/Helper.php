@@ -259,10 +259,6 @@ class Helper
      */
     public static function authMenu(User $user, int $group_id = 0)
     {
-        if ($group_id == 0) {
-            return redirect()->route('get.group.select');
-        }
-        
         cache(['current-group-' . $user->id => $group_id], 60 * 12);
         if ($cache = Cache::get("menu")) {
             if (isset($cache['menu-' . $user->id . $group_id])) {

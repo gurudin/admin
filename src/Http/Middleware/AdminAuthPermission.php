@@ -48,6 +48,9 @@ class AdminAuthPermission
                 return redirect()->route('get.group.select');
             }
         }
+        if ($request->isMethod('get') && !$request->get('group')) {
+            return redirect()->route('get.group.select');
+        }
 
         // Is admin.
         if (Helper::isAdmin(Auth::user())) {
