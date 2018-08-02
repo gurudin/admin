@@ -17,25 +17,6 @@
   <div class="col-12">
     <div class="card h-100">
       <div class="card-body">
-        
-        <div class="input-group mb-3">
-          <div class="input-group-append">
-            <select class="form-control" v-model="routeModel.method">
-              <option value="get">GET</option>
-              <option value="post">POST</option>
-              <option value="put">PUT</option>
-              <option value="delete">DELETE</option>
-              <option value="any">ANY</option>
-            </select>
-          </div>
-          <input type="text" class="form-control" placeholder="{{__('admin::messages.route.input-routing-address')}}" :class="{'is-invalid':validate && (routeModel.name=='' || routeModel.name[0] != '/')}" v-model.trim="routeModel.name">
-          <div class="input-group-append">
-            <button
-              class="btn btn-outline-success"
-              type="button"
-              @click="addRoute">{{__('admin::messages.route.add-route')}}</button>
-          </div>
-        </div>
 
         <div class="row col-12" v-cloak>
           <div class="col">
@@ -67,7 +48,6 @@
             </div>
           </div>
         </div>
-
         
       </div>
 
@@ -188,37 +168,6 @@ new Vue({
               }
             }
           });
-        } else {
-          alert(response.data.msg);
-        }
-        $btn.loading('reset');
-      });
-    },
-    addRoute(event) {
-      this.validate = true;
-      if (this.routeModel.name == '' || this.routeModel.name[0] != '/') {
-        return false;
-      }
-      let isRepet = 1;
-      this.permissionItem.route.forEach(row =>{
-        if (row.name == this.routeModel.name && row.method == this.routeModel.method) {
-          isRepet = 0;
-        }
-      });
-
-      if (isRepet == 0) {
-        alert('{{__('admin::messages.route.route-repetition')}}');
-        return false;
-      }
-
-      var _this = this;
-      var $btn = $(event.currentTarget);
-
-      $btn.loading('<i class="fas fa-spinner fa-spin"></i>');
-
-      axios.post('{{route("post.route.create")}}', this.routeModel).then(function (response) {
-        if (response.data.status) {
-          _this.permissionItem.route.unshift($.extend({}, _this.routeModel));
         } else {
           alert(response.data.msg);
         }

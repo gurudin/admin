@@ -30,7 +30,7 @@
       </div>
 
       <div class="dropdown">
-        <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-info dropdown-toggle dropdown-toggle-bar" type="button">
           <i class="fas fa-globe-americas"></i>
           
           @foreach (Gurudin\Admin\Support\Helper::authGroup(Auth::user()) as $group)
@@ -39,7 +39,7 @@
             @endif
           @endforeach
         </button>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-menu dropdown-menu-bar dropdown-menu-right">
           @foreach (Gurudin\Admin\Support\Helper::authGroup(Auth::user()) as $group)
             <a class="dropdown-item" href="{{ url()->current() . '?group=' . $group['id'] }}">{{ strtoupper($group['name']) }}</a>
           @endforeach
@@ -47,11 +47,11 @@
       </div>
 
       <div class="btn-group">
-        <button type="button" class="btn bg-info text-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="btn bg-info text-white dropdown-toggle dropdown-toggle-bar">
           <i class="fas fa-user-tie"></i>
           {{Auth::user()->name}}
         </button>
-        <div class="dropdown-menu dropdown-menu-right">
+        <div class="dropdown-menu dropdown-menu-bar dropdown-menu-right">
           <a class="dropdown-item" href="{{ route('logout') }}"
             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="fas fa-sign-out-alt"></i> Logout

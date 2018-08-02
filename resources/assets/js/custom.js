@@ -22,4 +22,18 @@
       $("#gurudin-main").addClass('col-md-10').removeClass('col-md-12');
     }
   });
+
+  $(".dropdown-toggle-bar").click(function () {
+    var _this = $(this);
+    var _con = $(this).nextUntil('dropdown-menu-bar');
+    _con.slideToggle(100);
+
+    $(document).mouseup(function (e) {
+      if ((!_con.is(e.target) && _con.has(e.target).length === 0)
+        && (!_this.is(e.target) && _this.has(e.target).length === 0)
+      ) {
+        _con.hide();
+      }
+    });
+  });
 })(jQuery);
