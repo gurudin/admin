@@ -38,6 +38,21 @@ class AuthPermissionController extends Controller
     }
 
     /**
+     * (view) Permission update
+     *
+     * @param Illuminate\Http\Request $request
+     * @param Gurudin\Admin\Models\AuthItem $authItem
+     *
+     * @return View
+     */
+    public function updateView(Request $request, AuthItem $authItem, string $name)
+    {
+
+        return view('admin::permission.create');
+    }
+    
+
+    /**
      * (view) Permission view
      *
      * @param Illuminate\Http\Request $request

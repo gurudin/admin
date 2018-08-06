@@ -10,8 +10,6 @@ window.$ = window.jQuery = require('jquery');
 
 require('./custom');
 
-require('./bootstrap/modal');
-
 window.Vue = require('vue');
 
 Vue.component('v-select', vSelect);

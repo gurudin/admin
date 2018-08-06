@@ -40,6 +40,7 @@ Route::prefix('admin')->group(function () {
 
         Route::get('permission', 'AuthPermissionController@index')->name('get.permission.index');
         Route::get('permission/create', 'AuthPermissionController@createView')->name('get.permission.create');
+        Route::get('permission/update/{name?}', 'AuthPermissionController@updateView')->name('get.permission.update');
         Route::post('permission', 'AuthPermissionController@create')->name('post.permission.create');
         Route::put('permission', 'AuthPermissionController@update')->name('put.permission.update');
         Route::delete('permission', 'AuthPermissionController@destroy')->name('delete.permission.destroy');

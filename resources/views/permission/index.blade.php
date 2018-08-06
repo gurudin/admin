@@ -41,9 +41,9 @@
             <a :href="'{{route('get.permission.view')}}/' + encodeURIComponent(item.name) + '?group={{request()->group}}'" class="btn btn-info text-white btn-sm">
               <i class="fas fa-eye"></i>
             </a>
-            <button type="button" class="btn btn-warning text-white btn-sm" @click="editModal(item)">
+            <a :href="'{{route('get.permission.update')}}/'+ encodeURIComponent(item.name) + '?group={{request()->group}}'" class="btn btn-warning text-white btn-sm" @click="editModal(item)">
               <i class="fas fa-edit"></i>
-            </button>
+            </a>
             <button type="button" class="btn btn-danger btn-sm" @click="deletePermission($event, inx, item)"><i class="fas fa-trash-alt"></i></button>
           </td>
         </tr>
