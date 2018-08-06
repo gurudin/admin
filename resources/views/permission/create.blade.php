@@ -56,11 +56,18 @@ new Vue({
   data() {
     return {
       modelData: {
-        name: "",
+        name: "{{isset($name) ? $name : ''}}",
         method: '',
         type: 2,
-        description: ""
+        description: "{{isset($desc) ? $desc : ''}}"
       },
+      oldModelData: {
+        name: "{{isset($name) ? $name : ''}}",
+        method: '',
+        type: 2,
+        description: "{{isset($desc) ? $desc : ''}}"
+      },
+      isEdit: {{$is_edit}},
       validate: false
     };
   },
@@ -74,16 +81,27 @@ new Vue({
       var _this = this;
       var $btn = $(event.target);
       $btn.loading();
-      axios.post('{{route("post.permission.create")}}', this.modelData).then(function (response) {
-        if (response.data.status) {
-          window.location = '{{url()->previous()}}';
-        } else {
-          alert(res.body.msg);
-          $btn.loading("reset");
-        }
-      });
+      if (this.isEdit == 0) {
+        axios.post('{{route("post.permission.create")}}', this.modelData).then(function (response) {
+          if (response.data.status) {
+            window.location = '{{url()->previous()}}';
+          } else {
+            alert(res.body.msg);
+            $btn.loading("reset");
+          }
+        });
+      } else {
+        axios.put('{{route("put.permission.update")}}', {old: this.oldModelData, new: this.modelData}).then(function (response) {
+          if (response.data.status) {
+            window.location = '{{url()->previous()}}';
+          } else {
+            alert(res.body.msg);
+            $btn.loading("reset");
+          }
+        });
+      }
     }
-  }
+  },
 });
 </script>
 @endsection

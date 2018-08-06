@@ -41,7 +41,7 @@
             <a :href="'{{route('get.permission.view')}}/' + encodeURIComponent(item.name) + '?group={{request()->group}}'" class="btn btn-info text-white btn-sm">
               <i class="fas fa-eye"></i>
             </a>
-            <a :href="'{{route('get.permission.update')}}/'+ encodeURIComponent(item.name) + '?group={{request()->group}}'" class="btn btn-warning text-white btn-sm" @click="editModal(item)">
+            <a :href="'{{route('get.permission.update')}}/'+ encodeURIComponent(item.name) + '/' + encodeURIComponent(item.description) + '?group={{request()->group}}'" class="btn btn-warning text-white btn-sm">
               <i class="fas fa-edit"></i>
             </a>
             <button type="button" class="btn btn-danger btn-sm" @click="deletePermission($event, inx, item)"><i class="fas fa-trash-alt"></i></button>
@@ -50,37 +50,6 @@
       </tbody>
     </table>
   </div>
-
-  <!-- Edit permission modal -->
-  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">{{__('admin::messages.permission.permission')}}: @{{editModel.old.name}}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">{{__('admin::messages.permission.name')}}:</label>
-              <input type="text" class="form-control" v-model="editModel.new.name" placeholder="{{__('admin::messages.permission.name')}}">
-            </div>
-            <div class="form-group">
-              <label for="message-text" class="col-form-label">{{__('admin::messages.permission.description')}}:</label>
-              <input type="text" class="form-control" v-model="editModel.new.description" placeholder="{{__('admin::messages.permission.description')}}">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('admin::messages.common.cancel')}}</button>
-          <button type="button" class="btn btn-success" @click="edit">{{__('admin::messages.common.save')}}</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- /Edit permission modal -->
 </div>
 @endsection
 
@@ -145,26 +114,6 @@ new Vue({
         $btn.loading("reset");
       });
     },
-    editModal(item) {
-      $("#editModal").modal('show');
-      this.editModel.old = item;
-      this.editModel.new = $.extend({}, item);
-    },
-    edit(event) {
-      var $btn = $(event.currentTarget);
-      $btn.loading('<i class="fas fa-spinner fa-spin"></i>');
-      
-      var _this = this;
-
-      axios.put('{{route("put.permission.update")}}', this.editModel).then(function (response) {
-        if (response.data.status) {
-          window.location.reload();
-        } else {
-          alert(res.body.msg);
-          $btn.loading("reset");
-        }
-      });
-    }
   }
 });
 </script>

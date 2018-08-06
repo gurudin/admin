@@ -34,7 +34,9 @@ class AuthPermissionController extends Controller
      */
     public function createView(Request $request, AuthItem $authItem)
     {
-        return view('admin::permission.create');
+        $is_edit = 0;
+
+        return view('admin::permission.create', compact('is_edit'));
     }
 
     /**
@@ -45,10 +47,11 @@ class AuthPermissionController extends Controller
      *
      * @return View
      */
-    public function updateView(Request $request, AuthItem $authItem, string $name)
+    public function updateView(Request $request, AuthItem $authItem, string $name, string $desc = '')
     {
+        $is_edit = 1;
 
-        return view('admin::permission.create');
+        return view('admin::permission.create', compact('name', 'desc', 'is_edit'));
     }
     
 

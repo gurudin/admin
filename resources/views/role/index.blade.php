@@ -47,12 +47,12 @@
   </div>
 
   <!-- Save role modal -->
-  <div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal" id="saveModal" style="background: #0000004a;">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">{{__('admin::messages.role.role')}}@{{modalTitle=='update' ? ': ' + roleModel.old.name : ''}}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="close('saveModal')">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -79,7 +79,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('admin::messages.common.cancel')}}</button>
+          <button type="button" class="btn btn-secondary" @click="close('saveModal')">{{__('admin::messages.common.cancel')}}</button>
           <button type="button" class="btn btn-success" @click="save">{{__('admin::messages.common.save')}}</button>
         </div>
       </div>
@@ -104,6 +104,9 @@ new Vue({
     };
   },
   methods: {
+    close(id) {
+      $('#' + id).fadeOut();
+    },
     showModal(method, item={}) {
       this.modalTitle = method;
       if (method == 'create') {
@@ -113,8 +116,8 @@ new Vue({
         this.roleModel.old = item;
         this.roleModel.new = $.extend({}, item);
       }
-
-      $('#saveModal').modal('show');
+      
+      $('#saveModal').fadeIn();
     },
     deleteRole(event, inx, item) {
       if (!confirm('{{__('admin::messages.common.are-you-sure-to-delete-this-item')}}')) {
