@@ -2,6 +2,10 @@
 
 Route::prefix('admin')->group(function () {
     Route::group(['namespace' => 'Controllers', 'middleware' => 'auth'], function () {
+        Route::get('main', function () {
+            return view('admin::layouts.main');
+        });
+
         Route::get('/', function () {
             return redirect()->route('get.group.select');
         });
