@@ -18,7 +18,7 @@
       d.setTime(d.getTime() + (minutes * 60 * 1000));
       var expires = "expires=" + d.toUTCString();
 
-      document.cookie = key + "=" + escape(value) + "; " + expires;
+      document.cookie = key + "=" + escape(value) + "; path=/;" + expires;
     },
     "getCookie": function (key) {
       var name = key + "=";
@@ -166,6 +166,7 @@
     } else {
       $LEFT_W = 230;
     }
+    $.clearCookie('left_w');
     $.setCookie('left_w', $LEFT_W, 60);
 
     setSize();
