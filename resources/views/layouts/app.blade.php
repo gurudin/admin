@@ -12,6 +12,158 @@
   <!-- Styles -->
   <link rel="stylesheet" type="text/css" href="{{ mix('css/admin.css', 'vendor/gurudin') }}">
   @yield('style')
+  <style>
+    body {
+  font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.471;
+  background-color: white;
+}
+a:hover{ text-decoration: none; }
+.gurudin-main{
+  margin: 0;
+  padding: 0;
+}
+.left-col{
+  background: #333d54;
+  width: 230px;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  position: fixed;
+  z-index: 10;
+}
+.nav_title{
+  width: 230px;
+  float: left;
+  background: #333d54;
+  border-radius: 0;
+  height: 52px;
+  padding-left: 10px;
+}
+.site_title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-weight: 400;
+  font-size: 22px;
+  width: 100%;
+  color: #ECF0F1 !important;
+  margin-left: 0 !important;
+  line-height: 59px;
+  display: block;
+  height: 55px;
+  margin: 0;
+}
+
+.main_menu_side{
+  padding: 0;
+}
+.menu_section {
+  margin-bottom: 35px;
+}
+.menu_section h3 {
+  padding-left: 15px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  font-weight: bold;
+  font-size: 11px;
+  margin-bottom: 0;
+  margin-top: 0;
+  text-shadow: 1px 1px #000;
+}
+.menu_section>ul {
+  margin-top: 10px;
+}
+.nav.side-menu>li {
+  width: 100%;
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.nav.side-menu>li>a, .nav.child_menu>li>a {
+  color: #E7E7E7;
+  font-weight: 500;
+}
+.nav.side-menu>li>a {
+  margin-bottom: 6px;
+}
+.nav>li>a {
+  position: relative;
+  display: block;
+  padding: 13px 15px 12px;
+}
+.main_menu span.fas {
+  float: right;
+  text-align: center;
+  margin-top: 5px;
+  font-size: 10px;
+  min-width: inherit;
+  color: #C4CFDA;
+}
+.main_menu .fas {
+  width: 26px;
+  opacity: .99;
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.nav.side-menu>li.current-page, .nav.side-menu>li.active {
+  border-right: 5px solid #1ABB9C;
+}
+.nav.side-menu>li.active>a {
+  text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
+  background: linear-gradient(#334556, #2C4257), #333d54;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
+}
+.nav.child_menu {
+  display: none;
+}
+.nav.child_menu li {
+  padding-left: 36px;
+  width: 100%;
+}
+.nav.child_menu>li>a {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 12px;
+  padding: 9px;
+}
+.nav.side-menu>li>a, .nav.child_menu>li>a {
+  color: #E7E7E7;
+  font-weight: 500;
+}
+.nav>li>a {
+  position: relative;
+  display: block;
+  padding: 13px 15px 12px;
+}
+
+.right-col{
+  float: left;
+  margin-left: 230px;
+  width: 100%;
+}
+.right-col .navbar {
+  padding: 0;
+  height: 53px;
+}
+
+#gurudin-nav {
+  position: fixed;
+  background-color: white;
+  z-index: 1;
+}
+#gurudin-nav .dropdown-toggle-bar{
+  font-size: 14px;
+  background-color: white;
+}
+  </style>
 </head>
 <body>
 
