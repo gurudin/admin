@@ -129,6 +129,9 @@ a:hover{ text-decoration: none; }
   padding-left: 36px;
   width: 100%;
 }
+.nav.child_menu li:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
 .nav.child_menu>li>a {
   color: rgba(255, 255, 255, 0.75);
   font-size: 12px;

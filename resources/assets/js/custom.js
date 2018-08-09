@@ -183,6 +183,8 @@
       if ($.getCookie('left_w') == 60) {
         $LEFT_W = 60;
 
+        $RIGHT_COL.css({ 'margin-left': $LEFT_W });
+        $LEFT_COL.css({ 'width': $LEFT_W });
         $SIDEBAR_MENU.find('span').hide();
         $("#site-name").hide();
       }
