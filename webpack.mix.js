@@ -24,5 +24,6 @@ mix.options({
   .js('resources/assets/js/admin.js', 'public/js')
   .sass('resources/assets/sass/admin.scss', 'public/css')
   .copy('resources/assets/fonts', 'public/fonts')
+  .copy('resources/assets/images', 'public/images')
   .sourceMaps()
   .version();

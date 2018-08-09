@@ -13,8 +13,6 @@ require('./custom');
 window.Vue = require('vue');
 
 Vue.component('v-select', vSelect);
-Vue.component('menu-tree', require('../components/menu.vue'));
-Vue.component('menu-child', require('../components/menuChild.vue'));
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -39,12 +37,3 @@ if (token) {
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-new Vue({
-  el: '#gurudin-menu-bar'
-});

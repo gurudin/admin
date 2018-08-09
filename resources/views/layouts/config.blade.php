@@ -1,5 +1,6 @@
 {{-- extends blade --}}
-@extends(config('admin.extends_blade'))
+{{-- @extends(config('admin.extends_blade')) --}}
+@extends('admin::layouts.main')
 
 {{-- Pages title --}}
 @section('title')
