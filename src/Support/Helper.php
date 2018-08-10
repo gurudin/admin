@@ -230,7 +230,10 @@ class Helper
      */
     public static function authGroup(User $user)
     {
-        
+        if (self::isAdmin($user)) {
+            return (new AuthGroup)->all();
+        }
+
         if ($cache = Cache::get('group')) {
             if (isset($cache['group' . $user->id])) {
                 return $cache['group' . $user->id];

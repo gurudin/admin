@@ -28,7 +28,7 @@
 
       <tbody>
         <tr v-for="(user,inx) in userItem">
-          <td>@{{inx + 1}}</td>
+          <td>@{{user.id}}</td>
           <td>@{{user.name}}</td>
           <td>@{{user.email}}</td>
           <td>
